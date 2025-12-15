@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    // === Temel Ayarlar (Playwright ve Node.js için Kritik) ===
+    
+    // Playwright/Node.js için hedef dil sürümü
+    "target": "ES2020", 
+    
+    // Node.js'in standart modül sistemi (CommonJS)
+    "module": "CommonJS", 
+    
+    // Modül Çözünürlüğü: Node.js stiline göre bağımlılıkları aramasını söyler.
+    "moduleResolution": "node",
+    
+    // Playwright yapılandırma dosyasını (bir TS modülü) okumak için önemlidir.
+    "esModuleInterop": true, 
+    
+    // Playwright'ın kullanacağı @types/node'u eklemek için
+    "types": ["node", "@playwright/test"], 
+    
+    // === Geliştirme ve Kalite Ayarları ===
+    
+    "strict": true, // Tüm katı tip kontrol bayraklarını açar.
+    "skipLibCheck": true, // Yüklenen kütüphane dosyalarının tip kontrolünü atlar (hızı artırır).
+    
+    // Çıktı klasörünü belirtiyoruz (opsiyonel, derleme yapmayacaksak kullanılmayabilir)
+    "outDir": "./dist", 
+    
+    // Kaynak Haritalarını etkinleştirir (hata ayıklama için yararlı)
+    "sourceMap": true, 
+
+    // JSON dosyalarını doğrudan ES6 modülleri gibi içe aktarmayı sağlar.
+    "resolveJsonModule": true,
+
+  },
+  
+  // Hangi dosyaların derleyici tarafından kapsanacağını belirtiriz
+  "include": [
+    "tests/**/*.ts", // tests klasöründeki tüm .ts dosyaları
+    "playwright.config.ts" // Yapılandırma dosyasını dahil ederiz
+  ]
+}
