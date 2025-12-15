@@ -26,8 +26,43 @@ npx playwright install
 ```
 
 ---
+## 2. API Tests (Mocked Backend)
 
-## 2. Project Structure
+All API tests run **only against mocks** (no real backend).
+
+Run only **API tests** (Playwright project: `API Tests`):
+
+```bash
+npm run test-api
+```
+
+---
+
+## 3. UI Tests (Demoblaze)
+
+Target website: `https://demoblaze.com/`
+
+Run only **UI tests** (Playwright project: `UI Tests`):
+
+```bash
+npm run test-ui
+```
+
+## 4. Running All Tests & Viewing Reports
+
+Run **all** tests (API + UI):
+
+```bash
+npm test
+```
+
+After any test run, open the **Playwright HTML report**:
+
+```bash
+npx playwright show-report
+```
+
+## 5. Project Structure
 
 - `tests/ui/pages/` – Page Object Models for Demoblaze UI  
   - `home.page.ts`  
@@ -54,44 +89,6 @@ npx playwright install
 The HTML reporter is enabled in `playwright.config.ts`.
 
 ---
-
-## 3. API Tests (Mocked Backend)
-
-All API tests run **only against mocks** (no real backend).
-
-Run only **API tests** (Playwright project: `API Tests`):
-
-```bash
-npm run test-api
-```
-
----
-
-## 4. UI Tests (Demoblaze)
-
-Target website: `https://demoblaze.com/`
-
-Run only **UI tests** (Playwright project: `UI Tests`):
-
-```bash
-npm run test-ui
-```
-
----
-
-## 5. Running All Tests & Viewing Reports
-
-Run **all** tests (API + UI):
-
-```bash
-npm test
-```
-
-After any test run, open the **Playwright HTML report**:
-
-```bash
-npx playwright show-report
-```
 
 The tests are structured with `test.step(...)` so that in the **Trace Viewer** (inside the HTML report), you can see each high-level step (e.g. “Setup API mocks”, “Send login request”, “Verify product details and Add to Cart button”) clearly.
 
