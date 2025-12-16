@@ -13,6 +13,38 @@ export class OrderService {
     };
   }
 
+  static createOrderPayloadWithoutUserId(): Record<string, any> {
+    return {
+      addressId: 3001,
+      productDetails: {
+        productId: 555,
+        quantity: 2,
+      },
+    };
+  }
+
+  static createOrderPayloadWithInvalidQuantity(quantity: number): Record<string, any> {
+    return {
+      userId: 1001,
+      addressId: 3001,
+      productDetails: {
+        productId: 555,
+        quantity,
+      },
+    };
+  }
+
+  static createOrderPayloadWithNonExistentProduct(): Record<string, any> {
+    return {
+      userId: 1001,
+      addressId: 3001,
+      productDetails: {
+        productId: 999,
+        quantity: 2,
+      },
+    };
+  }
+
   static parseCreateOrderResponse(response: any): { orderId: string; status: string } {
     return {
       orderId: response.orderId,

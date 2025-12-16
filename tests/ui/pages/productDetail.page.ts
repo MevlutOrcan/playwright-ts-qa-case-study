@@ -14,12 +14,11 @@ export class ProductDetailPage {
   }
 
   async addToCartAndAcceptAlert() {
-    // Handle browser alert triggered by "Add to cart"
-    this.page.once('dialog', async dialog => {
-      await dialog.accept();
-    });
-
+    // Set up dialog handler BEFORE clicking (Playwright best practice)
+    const dialogPromise = this.page.waitForEvent('dialog');
     await this.addToCartButton.click();
+    const dialog = await dialogPromise;
+    await dialog.accept();
   }
 
 
